@@ -1,0 +1,18 @@
+<h1>all lists</h1>
+<div class = "container">
+<%#= link_to "Add a list", new_list_path %>
+<hr>
+<ul>
+  <% @lists.each do |list| %>
+    <li><%= link_to list.name,list_path(list)%>
+    <p>(<%= list.movies.count %> movies)</p>
+      <%= link_to "delete", list_path(list),method: :delete, class:"btn btn-danger" %></li>
+  <% end %>
+</ul>
+
+  <h1>Add new list</h1>
+  <%= simple_form_for(@list) do |f| %>
+    <%= f.input :name %>
+    <%= f.submit %>
+  <% end %>
+</div>
