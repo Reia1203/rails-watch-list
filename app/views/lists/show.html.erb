@@ -1,14 +1,27 @@
 <div class = "container">
   <h1><%= @list.name %></h1>
   <%= link_to 'Leave a bookmark', new_list_bookmark_path(@list)%>
-  <ul class="list-group">
-  <% @list.bookmarks.each do |bookmark| %>
-    <li class="list-group-item"><%= bookmark.comment %>
-    <p><%= bookmark.movie.title %>  <%= bookmark.movie.rating %></p>
-    <p><strong>overview:</strong><%= bookmark.movie.overview %></p>
-    <%= image_tag "https://image.tmdb.org/t/p/original/#{bookmark.movie.poster_url}", width: 200 %>
-    <%= link_to "Delete", bookmark_path(bookmark),method: :delete %>
-    </li>
-    <% end %>
-  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="card" style="width: 30rem;">
+
+      <% @list.bookmarks.each do |bookmark| %>
+        <li class="list-group-item"><%= bookmark.comment %>
+        <h5><strong><%= bookmark.movie.title %>  (<%= bookmark.movie.rating %>)</strong></h5>
+        <%= link_to "Delete", bookmark_path(bookmark),method: :delete %>
+        <p><strong>Overview: </strong><%= bookmark.movie.overview %></p>
+        <%= image_tag "https://image.tmdb.org/t/p/original/#{bookmark.movie.poster_url}", width: 200, class:"card-img-top"%>
+        </li>
+      <% end %>
+    </div>
+
 </div>
